@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_note_app/screen/create_note/create_note_screen.dart';
 import 'package:flutter_note_app/screen/note/note_screen.dart';
 
 void main() {
@@ -27,6 +28,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: NoteScreen(),
+      routes: {
+        CreateNote.routeName:(ctx) => CreateNote(),
+      },
     );
   }
 }

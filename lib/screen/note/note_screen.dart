@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_note_app/model/note.dart';
+import 'package:flutter_note_app/screen/create_note/create_note_screen.dart';
 
 class NoteScreen extends StatelessWidget {
   const NoteScreen({Key? key}) : super(key: key);
@@ -11,18 +13,22 @@ class NoteScreen extends StatelessWidget {
         centerTitle: true,
         title: Text("Note List"),
       ),
-      body:ListView.builder(itemBuilder: (context,index){
-       return ListTile(
-          title:Text(Note.notes[index].title),
-          subtitle:Text(Note.notes[index].description),
-        );
-      
-
-      },
-      itemCount: Note.notes.length,
-    
+      body: ListView.builder(
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(Note.notes[index].title),
+            subtitle: Text(Note.notes[index].description),
+          );
+        },
+        itemCount: Note.notes.length,
       ),
-    
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, CreateNote.routeName);
+        },
+        child: Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
