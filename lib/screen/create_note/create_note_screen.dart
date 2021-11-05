@@ -1,13 +1,64 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_note_app/model/note.dart';
 
-class CreateNote extends StatelessWidget {
+class CreateNote extends StatefulWidget {
   const CreateNote({Key? key}) : super(key: key);
-  static const routeName = "create-note";
+  static const routeName = "createnote";
+
+  @override
+  State<CreateNote> createState() => _CreateNoteState();
+}
+
+class _CreateNoteState extends State<CreateNote> {
+  TextEditingController titleEditingController = TextEditingController();
+  TextEditingController descriptionEditingController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Create Note"),
+      ),
+      body: Container(
+        margin: EdgeInsets.all(20),
+        child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "please Enter Validate Title";
+                    } else {
+                      return null;
+                    }
+                  },
+                  controller: titleEditingController,
+                  decoration: InputDecoration(labelText: "Title"),
+                ),
+                TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "please Enter Validate Title";
+                    } else {
+                      return null;
+                    }
+                  },
+                  controller: descriptionEditingController,
+                  decoration: InputDecoration(labelText: "Description"),
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        
+                      }
+                    },
+                    child: Text("Create Note"))
+              ],
+            )),
+      ),
     );
   }
 }
