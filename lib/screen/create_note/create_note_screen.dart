@@ -59,7 +59,7 @@ class _CreateNoteState extends State<CreateNote> {
                         Note note = Note(title, description);
                         Note.notes.add(note);
                         Navigator.pop(context);
-                        Navigator.pushNamed(context, NoteScreen.routeName);
+                        Navigator.pushReplacementNamed(context, NoteScreen.routeName);
                       }
                     },
                     child: Text("Create Note"))
