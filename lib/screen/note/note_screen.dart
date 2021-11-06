@@ -6,6 +6,7 @@ import 'package:flutter_note_app/screen/note_details/note_details_screen.dart';
 
 class NoteScreen extends StatelessWidget {
   const NoteScreen({Key? key}) : super(key: key);
+  static const routeName = "/note";
 
   @override
   Widget build(BuildContext context) {

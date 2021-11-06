@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_note_app/model/note.dart';
+import 'package:flutter_note_app/screen/note/note_screen.dart';
 
 class CreateNote extends StatefulWidget {
   const CreateNote({Key? key}) : super(key: key);
@@ -52,7 +53,13 @@ class _CreateNoteState extends State<CreateNote> {
                 ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        
+                        String title = titleEditingController.text;
+                        String description = descriptionEditingController.text;
+                        print(title + " " + description);
+                        Note note = Note(title, description);
+                        Note.notes.add(note);
+                        Navigator.pop(context);
+                        Navigator.pushNamed(context, NoteScreen.routeName);
                       }
                     },
                     child: Text("Create Note"))
